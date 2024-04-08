@@ -1,0 +1,9 @@
+package com.springboot.database.repositories;
+
+import com.springboot.database.domain.Book;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface BookRepository extends CrudRepository<Book, String>{
+}

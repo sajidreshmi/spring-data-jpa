@@ -1,0 +1,4 @@
+com/springboot/database/repositories/AuthorRepositoryIntegrationTests.class
+com/springboot/database/DatabaseApplicationTests.class
+com/springboot/database/TestDataUtil.class
+com/springboot/database/repositories/BookRepositoryIntegrationTests.class

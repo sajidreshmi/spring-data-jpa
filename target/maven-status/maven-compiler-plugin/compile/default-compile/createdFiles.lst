@@ -1,0 +1,7 @@
+com/springboot/database/domain/Author$AuthorBuilder.class
+com/springboot/database/repositories/AuthorRepository.class
+com/springboot/database/domain/Book$BookBuilder.class
+com/springboot/database/DatabaseApplication.class
+com/springboot/database/domain/Book.class
+com/springboot/database/repositories/BookRepository.class
+com/springboot/database/domain/Author.class
