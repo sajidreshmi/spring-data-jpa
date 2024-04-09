@@ -1,4 +1,7 @@
+com/springboot/database/BooksApiApplicationTests.class
+com/springboot/database/controllers/AuthorControllerIntergrationTests.class
+com/springboot/database/JacksonTest.class
+com/springboot/database/controllers/BookControllerIntergrationTests.class
 com/springboot/database/repositories/AuthorRepositoryIntegrationTests.class
-com/springboot/database/DatabaseApplicationTests.class
 com/springboot/database/TestDataUtil.class
 com/springboot/database/repositories/BookRepositoryIntegrationTests.class

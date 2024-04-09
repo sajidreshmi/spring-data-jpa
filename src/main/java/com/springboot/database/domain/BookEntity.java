@@ -20,6 +20,7 @@ public class BookEntity {
     private String title;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
+    @JsonProperty("author")
     private AuthorEntity authorEntity;
     @Id
     private String isbn;

@@ -2,6 +2,8 @@ package com.springboot.database.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.database.TestDataUtil;
+import com.springboot.database.domain.AuthorEntity;
+import com.springboot.database.domain.BookEntity;
 import com.springboot.database.domain.dto.BookDto;
 import com.springboot.database.services.BookService;
 import org.junit.jupiter.api.Test;
@@ -62,6 +64,50 @@ public class BookControllerIntergrationTests {
                 MockMvcResultMatchers.jsonPath("$.isbn").value("978-1-2345-6789-0")
         ).andExpect(
                 MockMvcResultMatchers.jsonPath("$.title").value("The Shadow in the Attic")
+        );
+    }
+
+    @Test
+    public void testThatListBooksSuccessfullyReturnsListOfBooks() throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/books").contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(
+                MockMvcResultMatchers.status().isOk()
+        );
+    }
+
+    @Test
+    public void testThatListBooksSuccessfullyReturnsListOfBooksWithCorrectData() throws Exception {
+        BookEntity testBookA = TestDataUtil.createTestBookA(null);
+        bookService.createBook(testBookA.getIsbn(),testBookA);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/books").contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.content[0].isbn").value("978-1-2345-6789-0")
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.content[0].title").value("The Shadow in the Attic")
+        );
+    }
+
+    @Test
+    public void testThatListBooksSuccessfullyReturnsBookWith200() throws Exception {
+        BookEntity testBookA = TestDataUtil.createTestBookA(null);
+        bookService.createBook(testBookA.getIsbn(),testBookA);
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/books/" + testBookA.getIsbn()).contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(
+                MockMvcResultMatchers.status().isOk()
+        );
+    }
+
+    @Test
+    public void testThatListBooksSuccessfullyReturns404WhenNotFound() throws Exception {
+        BookEntity testBookA = TestDataUtil.createTestBookA(null);
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/books/" + testBookA.getIsbn()).contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(
+                MockMvcResultMatchers.status().isNotFound()
         );
     }
 }

@@ -16,7 +16,7 @@ public class JacksonTest {
                 .build();
 
         String result = objectMapper.writeValueAsString(book);
-        assertThat(result).isEqualTo("{\"title\":\"The Great Gatsby\",\"author\":null,\"isbn\":\"978-3-16-148410-0\",\"year\":\"1925\"}");
+        assertThat(result).isEqualTo("{\"title\":\"The Great Gatsby\",\"isbn\":\"978-3-16-148410-0\",\"author\":null,\"year\":\"1925\"}");
     }
 
     @Test
